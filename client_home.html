@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>Client Home</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: white;
+            }
+            button{
+                background-color: #4CAF50;
+                width: 25%;
+                padding: 15px;
+                color: black;
+                border: none;
+                float: center;
+                font-size: 15px;
+            }
+            label{
+                font-size: 20px;
+            }
+            form{
+                border: 3px solid #f1f1f1;
+            }
+            input[type=email],input[type=text],input[type=password]{
+                width: 50%;
+                font-size: 15px;
+                margin: 8px 0px;
+                padding: 12px 20px;
+                display: inline-block;
+                border: 2px solid green;
+                box-sizing: border-box;
+            }
+            input[type=radio]{
+                height: 18px;
+                width: 18px;
+            }
+            button:hover{
+                opacity:0.7;
+
+            }
+            .container{
+                padding: 50px;
+                background-color: white;
+            }
+            .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+            }
+              
+            img.avatar {
+                width: 10%;
+                border-radius: 50%;
+            }  
+        </style>
+    </head>
+    <body>
+        <button onclick="location.href = '/'">LogOut</button>
+        <center><h1>Client Home</h1></center>
+        <form method="post">
+            {% csrf_input %}
+            {% load static %}
+            <center><div class="container">
+                <label for='location'><b>Location : </b></label>
+		        <input type='text' placeholder="Enter your location" name='location' required><br>
+            	<button type="submit"><b>Find</b></button><br>
+            </div></center>
+        </form>
+        <table>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Sex
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Experience
+                </th>
+                <th>
+                    Expert in Cases
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Office Open Timing
+                </th>
+                <th>
+                    Office Closing Timing 
+                </th>
+                <th>
+                    Minimum Fee
+                </th>
+                <th>
+                    Address
+                </th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                {% for j in i%}
+                <td>{{j}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table>
+    </body>
+</html>

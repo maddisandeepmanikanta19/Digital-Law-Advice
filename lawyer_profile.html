@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Profile</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: white;
+            }
+            button{
+                background-color: #4CAF50;
+                width: 25%;
+                padding: 15px;
+                color: black;
+                border: none;
+                float: center;
+                font-size: 15px;
+            }
+            label{
+                font-size: 20px;
+            }
+            form{
+                border: 3px solid #f1f1f1;
+            }
+            input[type=email],input[type=text],input[type=number],input[type=time],textarea{
+                width: 50%;
+                font-size: 15px;
+                margin: 8px 0px;
+                padding: 12px 20px;
+                display: inline-block;
+                border: 2px solid green;
+                box-sizing: border-box;
+            }
+            input[type=radio]{
+                height: 18px;
+                width: 18px;
+            }
+            button:hover{
+                opacity:0.7;
+
+            }
+            .container{
+                padding: 50px;
+                background-color: white;
+            }
+            .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+            }
+              
+            img.avatar {
+                width: 10%;
+                border-radius: 50%;
+            } 
+            th{
+                text-align: left;
+            } 
+        </style>
+    </head>
+    <body>
+        <center><h1>Profile of {{email}}</h1></center>
+        <form method="post" action="/lawyerprofileupdate/">
+            {% csrf_input %}
+            {% load static %}
+            <center><div class="container">
+                <div class="imgcontainer">
+                    <img src="{% static 'Advocate_image.png' %}" alt="Avatar" class="avatar">
+                </div>
+                <label for='first_name'><b>First Name : </b></label>
+		        <input type='text' placeholder="Update your first name" name='first_name' value={{first_name}}><br>
+		        <label for='last_name'><b>Last Name :</b></label>
+		        <input type='text' placeholder='Update your last name' name='last_name' value={{last_name}}><br>
+                <label for ='email'><b>Email Id :  </b></label>
+            	<input type="email" placeholder="email" name="email" value={{email}}><br>  
+		        <label for='sex' ><b>Sex : </b></label>
+                <input type="text" placeholder="Update sex" name="sex" value={{sex}}><br>
+            	<label for="phonenumber" ><b>phonenumber</b></label>
+                <input type="text" placeholder="Update your phone number" name="phonenumber" value={{phonenumber}}><br/>
+                <label for="Experience" ><b>Experience(Years)</b></label>
+                <input type="number" placeholder="Update your Experience" name="Experience" value={{experience}}><br/>
+                <label for="Expert in Cases" ><b>Expert in Cases</b></label>
+                <input type="text" placeholder="Update your expert in Cases" name="Expert in Cases" value={{expert_in_cases}} ><br/>
+                <label for="LOCATION" ><b>LOCATION(city)</b></label>
+                <input type="text" placeholder="Update your LOCATION" name="LOCATION" value={{location}}><br/>
+                <label for="Officeopentiming" ><b>officeopenTiming</b></label>
+                <input type="time"  name="OfficeopenTiming" value={{office_opening_time}}><br/>
+                <label for="Officeclosetiming" ><b>officecloseTiming</b></label>
+                <input type="time"  name="OfficecloseTiming" value={{office_closing_time}}><br/>
+                <label for="MinimumFee" ><b>MinimumFee</b></label>
+                <input type="number" placeholder="Update your MinimumFee" name="MinimumFee" value={{minimumfee}}><br/>
+                <label for="Address" ><b>Address  </b></label>
+                <textarea name="address" rows=5>{{address}} </textarea><br>
+                <button type="submit"><b>update Profile</b></button><br><br>
+            </div></center>
+        </form>
+    </body>
+</html>
